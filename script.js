@@ -75,11 +75,11 @@ const questions = [
     ]
   },
   {
-    question: "Apa huruf keempat dalam alfabet Indonesia?",
+    question: "Apa huruf keempat dalam alfabet?",
     answers: [
       { text: "d", correct: true },
       { text: "a", correct: false },
-      { text: "o", correct: false }
+      { text: "m", correct: false }
     ]
   },
   {
@@ -111,7 +111,7 @@ const questions = [
     answers: [
       { text: "Batu", correct: false },
       { text: "Balon", correct: true },
-      { text: "Ikan terbang", correct: true }
+      { text: "Ikan terbang", correct: false }
     ]
   }
 ];
