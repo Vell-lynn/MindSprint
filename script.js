@@ -289,7 +289,6 @@ function restartGame() {
   gameOverScreen.classList.add('hidden');
   startScreen.classList.remove('hidden');
 }
-=======
 const startScreen = document.getElementById('start-screen');
 const gameScreen = document.getElementById('game-screen');
 const gameOverScreen = document.getElementById('game-over-screen');
@@ -574,4 +573,4 @@ function restartGame() {
   gameOverScreen.classList.add('hidden');
   startScreen.classList.remove('hidden');
 }
->>>>>>> dc5a10e (update warna, menambahkan sound effect)
+
