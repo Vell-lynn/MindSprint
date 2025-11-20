@@ -59,13 +59,13 @@ body::before {
 h1 {
   font-size: 80px;
   margin-bottom: 10px;
-  color: #a43a23;
+  color: #ff7300;
 }
 
 h1 + p {
   margin-top: 0;
   font-size: 20px;
-  color: #fff;
+  color: #6c1704;
 }
 
 .hidden { display: none; }
@@ -95,7 +95,7 @@ cursor: pointer;
 border-radius: 12px;
 border: none;
 color: #fff;
-background: linear-gradient(90deg, #eace42, #98532e);
+background: linear-gradient(90deg, #ffc96b, #ff9642);
 box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
 position: relative;
@@ -218,9 +218,10 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.2);
   background-color: green;
 }
 
-#timer, #score, #progress {
-  font-size: 20px;
+#questionTimer, #score, #progress {
+  font-size: 35px;
   margin: 0 10px;
+  color: #e14e31;
 }
 
 #rabbitWrap {
