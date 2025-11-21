@@ -286,3 +286,21 @@ function restartGame() {
   gameOverScreen.classList.add('hidden');
   startScreen.classList.remove('hidden');
 }
+
+function spawnCarrot() {
+  const carrot = document.createElement("div");
+  carrot.classList.add("carrot");
+  carrot.textContent = "🥕";
+
+  carrot.style.left = Math.random() * 100 + "vw";
+  carrot.style.animationDuration = 3 + Math.random() * 3 + "s"; // 3–6s
+
+  document.querySelector(".carrot-bg").appendChild(carrot);
+
+  // hapus kalau sudah lewat bawah
+  setTimeout(() => {
+    carrot.remove();
+  }, 6000);
+}
+
+setInterval(spawnCarrot, 300); // setiap 0.3 detik
