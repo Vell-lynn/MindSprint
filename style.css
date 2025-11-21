@@ -59,7 +59,7 @@ body::before {
 h1 {
   font-size: 80px;
   margin-bottom: 10px;
-  color: #c65d08;
+  color: #db8442;
 }
 
 h1 + p {
@@ -239,13 +239,6 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.2);
   transform-origin: center bottom;
 }
 
-
-@keyframes jump {
-  0%   { transform: translateY(0) scale(1); }
-  30%  { transform: translateY(-40px) scale(1.08); }
-  60%  { transform: translateY(8px) scale(0.98); }
-  100% { transform: translateY(0) scale(1); }
-}
 
 #confetti-container {
   position: fixed;
