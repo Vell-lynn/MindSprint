@@ -11,8 +11,8 @@ const answerButtons = document.getElementById('answer-buttons');
 const progressEl = document.getElementById('progress');
 const boardCells = document.querySelectorAll('#board .cell');
 const boardEl = document.getElementById('board');
-const rabbitWrap = document.getElementById('rabbitWrap');
-const rabbit = document.getElementById('rabbit');
+const ayamWrap = document.getElementById('ayamWrap');
+const ayam = document.getElementById('ayama');
 const confettiContainer = document.getElementById('confetti-container');
 const sfxWin = document.getElementById('sfx-win');
 const sfxLose = document.getElementById('sfx-lose');
@@ -20,101 +20,102 @@ const sfxLose = document.getElementById('sfx-lose');
 let score = 0;
 let currentQuestionIndex = 0;
 let shuffledQuestions = [];
-let rabbitPosition = 0;
+let ayamPosition = 0;
 let lastAnswerWrong = false;
 let questionTimer = null;
 const questionTime = 15; 
 
 const questions = [
   {
-    question: "Lebih berat mana antara 1 kg kapas dan 1 kg besi?",
+    question: "Kerajaan besar yang pernah berdiri di Jawa pada abad ke-14?",
     answers: [
-      { text: "1 kg besi", correct: false },
-      { text: "1 kg kapas", correct: false },
-      { text: "Sama aja", correct: true }
+      { text: "Sriwijaya", correct: false },
+      { text: "Majapahit", correct: true },
+      { text: "Pajang", correct: false }
     ]
   },
   {
-    question: "Jika 3 kucing bisa tangkap 3 tikus dalam 3 menit, berapa menit 100 kucing butuh tangkap 100 tikus?",
+    question: "Siapa mahapatih paling terkenal dari Majapahit?",
     answers: [
-      { text: "3 menit", correct: true },
-      { text: "33 menit", correct: false },
-      { text: "100 menit", correct: false }
+      { text: "Patih Logender", correct: false },
+      { text: "Gajah Mada", correct: true },
+      { text: "Mpu Tantular", correct: false }
     ]
   },
   {
-    question: "Ada 10 burung di pohon. 2 ditembak. Berapa burung yang tersisa di pohon?",
+    question: "Sumpah apa yang diucapkan Gajah Mada untuk mempersatukan Nusantara?",
     answers: [
-      { text: "2", correct: false },
-      { text: "0", correct: true },
-      { text: "8", correct: false }
+      { text: "Sumpah Amukti Palapa", correct: false },
+      { text: "Sumpah Palapa", correct: true },
+      { text: "Sumpah Nusantara", correct: false }
     ]
   },
   {
-    question: "Jika sebuah jam berhenti selama 5 menit tiap 12 jam, berapa lama jam itu telat dalam 24 jam?",
+    question: "Kerajaan Hindu-Buddha yang menjadi cikal bakal Majapahit?",
     answers: [
-      { text: "5 menit", correct: false },
-      { text: "10 menit", correct: true },
-      { text: "12 menit", correct: false }
+      { text: "Kediri", correct: false },
+      { text: "Singhasari", correct: true },
+      { text: "Tarumanegara", correct: false }
     ]
   },
   {
-    question: "Sebuah rumah punya 4 sisi, masing-masing menghadap selatan. Seekor beruang berjalan di depan rumah itu. Warnanya apa?",
+    question: "Raja Singhasari yang dibunuh dalam kudeta Jayakatwang?",
     answers: [
-      { text: "Putih", correct: true },
-      { text: "Hitam", correct: false },
-      { text: "Coklat", correct: false }
+      { text: "Anusapati", correct: false },
+      { text: "Kertanegara", correct: true },
+      { text: "Tunggul Ametung", correct: false }
     ]
   },
   {
-    question: "Ada 5 bebek, dikali 2. Berapa total bebeknya sekarang?",
+    question: "Siapa raja pertama Majapahit?",
     answers: [
-      { text: "10 bebek", correct: false },
-      { text: "7 bebek", correct: false },
-      { text: "3 bebek", correct: true }
+      { text: "Raden Wijaya", correct: true },
+      { text: "Jayanegara", correct: false },
+      { text: "Hayam Wuruk", correct: false }
     ]
   },
   {
-    question: "Apa huruf keempat dalam alfabet Indonesia?",
+    question: "Candi Buddha terbesar di dunia yang berada di Jawa?",
     answers: [
-      { text: "d", correct: true },
-      { text: "a", correct: false },
-      { text: "o", correct: false }
+      { text: "Candi Borobudur", correct: true },
+      { text: "Candi Sewu", correct: false },
+      { text: "Candi Kalasan", correct: false }
     ]
   },
   {
-    question: "Ada berapa buah apel di pohon mapel?",
+    question: "Candi Hindu terbesar di Indonesia yang ada di Jawa?",
     answers: [
-      { text: "40", correct: false },
-      { text: "13", correct: false },
-      { text: "tidak ada", correct: true }
+      { text: "Candi Penataran", correct: false },
+      { text: "Candi Prambanan", correct: true },
+      { text: "Candi Gedong Songo", correct: false }
     ]
   },
   {
-    question: "Satu ibu punya 6 anak. Setiap anak punya satu saudara perempuan.",
+    question: "Siapa pendiri Kerajaan Mataram Islam?",
     answers: [
-      { text: "6", correct: false },
-      { text: "7", correct: false },
-      { text: "1", correct: true }
+      { text: "Sultan Agung", correct: false },
+      { text: "Panembahan Senopati", correct: true },
+      { text: "Ki Ageng Pemanahan", correct: false }
     ]
   },
   {
-    question: "Apakah kata yang salah selalu dieja salah?",
+    question: "Perjanjian apa yang membelah Jawa menjadi dua wilayah (Kasunanan & Kesultanan)?",
     answers: [
-      { text: "Benar", correct: false },
-      { text: "Ya", correct: false },
-      { text: "Salah", correct: true }
+      { text: "Perjanjian Salatiga", correct: false },
+      { text: "Perjanjian Giyanti", correct: true },
+      { text: "Perjanjian Jepara", correct: false }
     ]
   },
   {
-    question: "Aku tidak memiliki sayap, tetapi aku bisa terbang. Apa aku?",
+    question: "Siapa pemimpin Perang Diponegoro (1825–1830)?",
     answers: [
-      { text: "Batu", correct: false },
-      { text: "Balon", correct: true },
-      { text: "Ikan terbang", correct: true }
+      { text: "Pangeran Mangkunegara", correct: false },
+      { text: "Pangeran Diponegoro", correct: true },
+      { text: "Pangeran Mangkubumi", correct: false }
     ]
   }
 ];
+
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -133,7 +134,7 @@ function startGame() {
 
   score = 0;
   currentQuestionIndex = 0;
-  rabbitPosition = 0;
+  ayamPosition = 0;
   lastAnswerWrong = false;
 
   shuffledQuestions = shuffleArray([...questions]);
@@ -174,7 +175,7 @@ function showQuestion() {
 
 function handleQuestionTimeout() {
   lastAnswerWrong = true;
-  rabbitPosition = Math.max(0, rabbitPosition - 1);
+  ayamPosition = Math.max(0, ayamPosition - 1);
   updateBoard();
 
   nextQuestion();
@@ -185,11 +186,11 @@ function selectAnswer(isCorrect) {
 
   if (isCorrect) {
     score++;
-    rabbitPosition++;
+    ayamPosition++;
     lastAnswerWrong = false;
   } else {
     if (lastAnswerWrong) {
-      rabbitPosition = Math.max(0, rabbitPosition - 1);
+      ayamPosition = Math.max(0, ayamPosition - 1);
     }
     lastAnswerWrong = true;
   }
@@ -202,7 +203,7 @@ function selectAnswer(isCorrect) {
 
 function nextQuestion() {
   currentQuestionIndex++;
-  if (currentQuestionIndex < shuffledQuestions.length && rabbitPosition < 11) {
+  if (currentQuestionIndex < shuffledQuestions.length && ayamPosition < 11) {
     progressEl.textContent = `Soal: ${currentQuestionIndex + 1}/${shuffledQuestions.length}`;
     showQuestion();
   } else {
@@ -216,26 +217,26 @@ function updateBoard() {
   const totalCells = cols * rows;
 
   boardCells.forEach(cell => cell.textContent = ''); 
-  boardCells[0].textContent = '🌱';
-  boardCells[totalCells - 1].textContent = '🥕';
+  boardCells[0].textContent = '⭐';
+  boardCells[totalCells - 1].textContent = '🌾';
 
-  let row = Math.floor(rabbitPosition / cols);
-  let col = rabbitPosition % cols;
+  let row = Math.floor(ayamPosition / cols);
+  let col = ayamPosition % cols;
 
   if (row % 2 === 1) {
     col = cols - 1 - col;
   }
 
   let index = row * cols + col;
-  boardCells[index].textContent = '🐰';
+  boardCells[index].textContent = '🐥';
 }
 
 
 function endGame() {
   if (questionTimer) clearInterval(questionTimer);
-  // determine win/lose by checking final rabbit position vs board end
+
   const totalCells = boardCells.length;
-  const reachedFinish = rabbitPosition >= totalCells - 1;
+  const reachedFinish = ayamPosition >= totalCells - 1;
 
   if (reachedFinish) {
     showWin();
@@ -248,7 +249,6 @@ function endGame() {
   finalScoreEl.textContent = `Skor Akhir: ${score}`;
 }
 
-// Confetti creator (DOM-based, simple)
 function createConfetti(count = 60) {
   if (!confettiContainer) return;
   const colors = ['#ffcc00','#ff6b6b','#6bffb3','#6bb3ff','#d36bff','#ffd36b'];
@@ -260,19 +260,18 @@ function createConfetti(count = 60) {
     piece.style.background = color;
     const left = Math.random() * boxWidth;
     piece.style.left = `${left}px`;
-    const tx = (Math.random() - 0.5) * 200; // horizontal drift
+    const tx = (Math.random() - 0.5) * 200; 
     piece.style.setProperty('--tx', `${tx}px`);
     const duration = 1400 + Math.random() * 1600;
     piece.style.animation = `confetti-fall ${duration}ms linear forwards`;
     confettiContainer.appendChild(piece);
-    // remove after animation
+
     setTimeout(() => piece.remove(), duration + 200);
   }
 }
 
 function showWin() {
   if (sfxWin) { sfxWin.currentTime = 0; sfxWin.play().catch(()=>{}); }
-  // show confetti
   createConfetti(80);
 }
 
@@ -286,5 +285,38 @@ function restartGame() {
   gameOverScreen.classList.add('hidden');
   startScreen.classList.remove('hidden');
 }
+
+
+(function initstarRain(){
+  const container = document.getElementById('star-rain') || (() => {
+    const el = document.createElement('div');
+    el.id = 'star-rain';
+    el.setAttribute('aria-hidden', 'true');
+    document.body.insertBefore(el, document.body.firstChild);
+    return el;
+  })();
+
+  function spawnstar() {
+    const el = document.createElement('div');
+    el.className = 'star';
+    el.textContent = '⭐';
+    const size = 12 + Math.random() * 22; 
+    el.style.fontSize = `${size}px`;
+    const left = Math.random() * 100;
+    el.style.left = `${left}%`;
+    const tx = (Math.random() - 0.5) * 30 + 'vw'; 
+    el.style.setProperty('--tx', tx);
+    const duration = 3500 + Math.random() * 4500;
+    el.style.animation = `star-fall ${duration}ms linear forwards`;
+    container.appendChild(el);
+    el.addEventListener('animationend', () => el.remove());
+  }
+
+  
+  let spawnInterval = 400;
+  if (window.innerWidth < 500) spawnInterval = 900;
+  setInterval(spawnstar, spawnInterval);
+})();
+
 
 
